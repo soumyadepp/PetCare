@@ -10,7 +10,7 @@ router.post('/signup', (request, response) => {
             password: request.body.password
         })
         const isUserExist = signUpTemplateCopy.findOne({ email: request.body.email })
-        if (isUserExist) {
+        if (isUserExist.email != null) {
             response.send({ error: 'User already exist' })
         } else {
             signedUpUser.save()
