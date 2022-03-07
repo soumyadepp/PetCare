@@ -1,0 +1,55 @@
+.vetlogin-container{
+    height:calc(100vh - 80px);
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    @media(max-width:1024px){
+        flex-direction: column;
+    }
+    .vetlogin-image{
+        height:40vmin;
+        object-fit: contain;
+    }
+    .vetlogin-form-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:30%;
+        h2{
+            font-size: 5vmin;
+            @media(max-width:1024px){
+                font-size: 3.5vmin;
+            }
+        }
+        .vetlogin-form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            .form-control{
+                width: 100%;
+                padding:8px;
+                background: #efefef;
+                border:none;
+                outline:none;
+                font-size: 2.5vmin;
+                margin-block-start: 10px;
+            }
+            .submit-btn{
+                margin-block-start: 10px;
+                border:none;
+                padding:8px;
+                font-size: 2.5vmin;
+                color:#fff;
+                background: #000;
+                width:100%;
+            }
+            .error-text{
+                font-size: 3vmin;
+                color:#d10023;
+            }
+        }
+    }
+}

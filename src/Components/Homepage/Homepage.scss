@@ -1,0 +1,136 @@
+@mixin animate($animation, $duration, $method, $times) {
+    animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+.dashboard-container {
+    height: calc(100vh - 80px);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .loading-div {
+        position: absolute;
+        height: calc(100vh - 80px);
+        z-index: 100;
+        background: #fff;
+        .loading-icon {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            font-size: 7vmin;
+            transform: translate(-50%, -50%);
+            animation: loading 0.8s ease-in-out infinite;
+            @include keyframes(loading) {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+        h1 {
+            position: absolute;
+            top: 50%;
+            margin-left: 20px;
+            left: 50%;
+            margin-top: 20px;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            font-size: 6.5vmin;
+            font-weight: 600;
+        }
+    }
+    .dashboard-left {
+        height: calc(100vh - 80px);
+        flex: 0.3;
+        background: #000;
+        max-width: 100vh;
+        overflow-y: scroll;
+        border-right: 2px solid rgba(255, 255, 255, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        .dashboard-left-top {
+            background: rgba(255, 255, 255, 0.13);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            .add-icon {
+                font-size: 4vmin;
+                color: #fff;
+                &:hover {
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    color: #efefef;
+                }
+            }
+        }
+        .dashboard-pet {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            img {
+                margin-top: 20px;
+                width: 35vmin;
+                object-fit: contain;
+            }
+            h2 {
+                width: 35vmin;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: rgba(255, 255, 255, 0.13);
+                font-size: 3.5vmin;
+                color: #fff;
+            }
+            h3 {
+                width: 35vmin;
+                padding: 10px;
+                margin-top: 10px;
+                background-color: rgba(255, 255, 255, 0.13);
+                font-size: 2.8vmin;
+                color: #fff;
+            }
+        }
+    }
+    .dashboard-middle {
+        height: calc(100vh - 80px);
+        flex: 1;
+        background: #fefefe;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow-y: scroll;
+        .dashboard-middle-top {
+            height: calc(50vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border-bottom: 2px solid #ccc;
+        }
+        .dashboard-middle-bottom {
+            height: calc(50vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .dashboard-right {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-left: 2px solid rgba(255, 255, 255, 0.3);
+        height: calc(100vh - 80px);
+        flex: 0.3;
+        overflow-y: scroll;
+        width: 100%;
+        background: #efefef;
+    }
+}

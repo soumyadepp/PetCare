@@ -1,0 +1,58 @@
+.navbar-container{
+    height:80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    .navbar-left{
+        padding:5px;
+        margin-inline-start: 10px;
+        h2{
+            font-size: 3.5vmin;
+        }
+    }
+    .navbar-right{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        h2{
+            margin-inline-end: 20px;
+            font-size: 2.5vmin;
+        }
+        .login-btn{
+            padding:8px;
+            margin:10px;
+            font-size: 2.5vmin;
+            background: rgba(255,255,255,0.13);
+            color : #fff;
+            border:1px solid rgba(255,255,255,0.13);
+            outline:none;
+            &:hover{
+                background-color: rgba(255,255,255,0.05);
+                transition: all 0.2s ease-in-out;
+            }
+        }
+        .signup-btn{
+            margin:10px;
+            padding:8px;
+            font-size: 2.2vmin;
+            background: transparent;
+            color:#fff;
+            border-radius: 5px;
+            border:2px solid rgba(255,255,255,0.3);
+            outline:none;
+            &:hover{
+                transition: all 0.2s ease-in;
+                color:#efefef;
+            }
+        }
+        .account-image{
+            margin-inline-start: 20px;
+            margin-inline-end: 20px;
+            height: 5vmin;
+            width: auto;
+        }
+    }
+}

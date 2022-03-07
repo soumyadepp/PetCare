@@ -1,0 +1,137 @@
+@mixin animate($animation, $duration, $method, $times) {
+    animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+.signup-container {
+    height: calc(100vh - 80px);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @media(max-width: 1024px) {
+        flex-direction: column;
+    }
+    .loader {
+        position: absolute;
+        height: calc(100vh - 80px);
+        z-index: 100;
+        background: #fff;
+        .loading-icon {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            font-size: 7vmin;
+            transform: translate(-50%, -50%);
+            animation: loading 0.8s ease-in-out infinite;
+            @include keyframes(loading) {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+        h1 {
+            position: absolute;
+            top: 50%;
+            margin-left: 20px;
+            left: 50%;
+            margin-top: 20px;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            font-size: 6.5vmin;
+            font-weight: 600;
+        }
+    }
+    .signup-left {
+        height: 70%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        flex: 0.35;
+        padding: 20px;
+        margin: 10px;
+        h2 {
+            font-size: 4vmin;
+        }
+        .signup-image {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            @media(max-width: 1024px) {
+                height: 12rem;
+            }
+        }
+    }
+    .signup-right {
+        height: 90%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 20px;
+        margin: 10px;
+        flex: 0.45;
+        h2 {
+            font-size: 4.5vmin;
+        }
+        .signup-form {
+            height: 100%;
+            width: 80%;
+            padding: 20px;
+            flex-direction: column;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            input {
+                background: #efefef;
+                outline: none;
+                width: 100%;
+                font-size: 2.5vmin;
+                padding: 10px;
+                margin: 5px;
+                border: 1px solid #fff;
+                border: none;
+                &:focus {
+                    border: 1px solid #000;
+                }
+            }
+            button {
+                margin-top: 10px;
+                padding: 8px;
+                width: auto;
+                width: 100%;
+                background-color: #000;
+                color: #fff;
+                font-size: 3vmin;
+                border: none;
+                outline: none;
+            }
+            span {
+                margin: 15px;
+                font-size: 2.5vmin;
+                text-decoration: none;
+            }
+            .error-div {
+                font-size: 3vmin;
+                color: #d10023;
+            }
+            .signup-link {
+                margin-top: 10px;
+                font-size: 3vmin;
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    }
+}
