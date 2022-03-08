@@ -1,0 +1,13 @@
+ .dashboard-middle-bottom {
+     height: 100%;
+     overflow-y: scroll;
+     display: grid;
+     grid-template-columns: auto auto auto;
+     grid-gap: 20px;
+     @media(max-width: 1024px) {
+         grid-template-columns: auto auto;
+     }
+     @media(max-width: 768px) {
+         grid-template-columns: auto;
+     }
+ }

@@ -13,6 +13,10 @@ import SuccessPage from "./Components/SuccessPage/SuccessPage";
 function App() {
   const user =
     localStorage.getItem("email") != null ? localStorage.getItem("email") : "";
+  const vetUser =
+    localStorage.getItem("vet_email") != null
+      ? localStorage.getItem("vet_email")
+      : "";
   return (
     <Router>
       <div className="App">
@@ -84,7 +88,7 @@ function App() {
             path="/vet/dashboard"
             element={
               <>
-                <Navbar user={user} />
+                <Navbar user={vetUser} />
                 <VetDashboard />
               </>
             }

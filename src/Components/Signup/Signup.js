@@ -8,7 +8,14 @@ import Axios from "axios";
 function Signup() {
   //equivalent to document.ready
   useEffect(() => {
-    if (localStorage.getItem("email") != undefined) {
+    if (
+      localStorage.getItem("vet_email") != null &&
+      localStorage.getItem("vet_email").length > 0
+    ) {
+      setLoading(true);
+      window.location.href = "/vet/dashboard";
+    } else if (localStorage.getItem("email") != undefined) {
+      setLoading(true);
       window.location.href = "/dashboard";
     }
   }, []);

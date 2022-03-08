@@ -13,9 +13,16 @@ function Login() {
   //this is equivalent to document.ready
   useEffect(() => {
     if (
+      localStorage.getItem("vet_email") != null &&
+      localStorage.getItem("vet_email").length > 0
+    ) {
+      setLoading(true);
+      window.location.href = "/vet/dashboard";
+    } else if (
       localStorage.getItem("email") != null &&
       localStorage.getItem("email") != "undefined"
     ) {
+      setLoading(true);
       window.location.href = "/dashboard";
     }
   }, []);
@@ -40,6 +47,8 @@ function Login() {
           console.log("success");
           if (res.data.email != null) {
             localStorage.setItem("email", res.data.email);
+            localStorage.setItem("name", res.data.name);
+            localStorage.setItem("id", res.data._id);
             window.location.href = "/dashboard";
           } else {
             setLoading(false);

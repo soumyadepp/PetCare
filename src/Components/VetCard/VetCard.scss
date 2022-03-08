@@ -1,26 +1,63 @@
 .vetcard-container {
-    min-height: 500px;
-    background: #fff;
+    max-height: 100%;
+    width: 40vmin;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
     margin: 10px;
-    .vetcard-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        h2 {
-            font-size: 4.5vmin;
+    border: 1px solid #ccc;
+    &:hover {
+        transition: all 0.2s ease-in;
+        box-shadow: 0px 0px 10px #3f3f3f;
+    }
+    .vetcard-left {
+        padding: 5px;
+        img {
+            width: 25vmin;
+            height: auto;
         }
-        .vetcard-image {
-            height: 100%;
+    }
+    .vetcard-right {
+        h2 {
+            font-size: 3vmin;
+        }
+        p {
+            font-size: 2vmin;
+        }
+        .book-btn {
+            margin-top: 10px;
+            padding: 8px;
             width: 100%;
-            object-fit: contain;
-            @media(max-width: 1024px) {
-                height: 60vmin;
+            background: #000;
+            color: #fff;
+            font-size: 2.5vmin;
+            font-weight: 600;
+            outline: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            &:hover {
+                transition: all 0.2s ease-in;
+                background: #ccc;
+                color: #000;
             }
+        }
+        .call-btn {
+            margin-top: 10px;
+            padding: 8px;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            border: 1px solid #3f3f3f;
+            font-size: 2.5vmin;
+            font-weight: 600;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
         }
     }
 }

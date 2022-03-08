@@ -41,8 +41,9 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             &:hover {
-                background: #3f3f3f;
-                color: #fff;
+                transition: all 0.2s ease-in-out;
+                background: #fff;
+                color: #000;
                 border: 1px solid #3f3f3f;
             }
         }

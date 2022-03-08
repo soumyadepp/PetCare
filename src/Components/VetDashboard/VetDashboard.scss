@@ -1,61 +1,140 @@
-.vet-dashboard{
+.vet-dashboard {
     height: calc(100vh - 80px);
     background: #fff;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    .vet-dashboard-left{
-        flex:0.3;
-        border-top: 2px solid rgba(255,255,255,0.13);
+    justify-content: space-between;
+    .vet-dashboard-left {
+        flex: 0.3;
+        border-top: 2px solid rgba(255, 255, 255, 0.13);
         background-color: #000;
-        color:#fff;
-        padding:20px;
+        color: #fff;
+        padding: 20px;
         display: flex;
         align-items: center;
         flex-direction: column;
-        justify-content:flex-start;
+        justify-content: flex-start;
         height: 100%;
-        .img-div{
-            padding:5px;
-            margin:10px;
-            img{
-                width:35vmin;
+        @media(max-width: 1024px) {
+            display: none;
+        }
+        .img-div {
+            padding: 5px;
+            margin: 10px;
+            img {
+                width: 35vmin;
                 object-fit: contain;
             }
         }
-        h2{
+        h2 {
             margin-top: 10px;
             font-size: 3.5vmin;
         }
-        h3{
+        h3 {
             font-size: 2vmin;
         }
-        .detail{
+        .detail {
             display: flex;
             align-items: center;
             flex-direction: column;
             justify-content: center;
-            border:1px solid #fff;
+            border: 1px solid #fff;
             width: 100%;
-            .detail-btn{
-                
+            .detail-btn {
                 font-size: 2.5vmin;
                 font-weight: 500;
-                width:100%;
+                width: 100%;
                 background: #000;
-                padding:8px;
-                border:none;
+                padding: 8px;
+                border: none;
                 border-radius: 10px;
-                color:#fff;
+                color: #fff;
                 outline: none;
-                span{
-                    color:#efefef;
+                span {
+                    color: #efefef;
                 }
             }
         }
     }
-    .vet-dashboard-right{
-        flex:1;
-        width:100%;
+    .vet-dashboard-right {
+        flex: 1;
+        width: 100%;
+        padding: 10px;
+        height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        overflow-y: scroll;
+        .vet-dashboard-right-top {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+            @media(max-width: 1024px) {
+                flex-direction: column;
+            }
+            .card {
+                width: 100%;
+                margin: 10px;
+                padding: 20px;
+                border-radius: 10px;
+                background: #000;
+                box-shadow: 0px 0px 10px #3f3f3f;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                h2 {
+                    font-size: 4vmin;
+                    font-weight: 500;
+                    color: #fff;
+                }
+                p {
+                    font-size: 2.5vmin;
+                    color: #fff;
+                }
+            }
+        }
+        .vet-dashboard-right-bottom {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+            .review-div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+    .vet-dashboard-appointments {
+        background: #efefef;
+        flex: 0.56;
+        width: 100%;
+        position: relative;
+        height: calc(100vh - 80px);
+        display: flex;
+        border-left: 1px solid #ccc;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-y: scroll;
+        @media(max-width: 1024px) {
+            display: none;
+        }
+        .vet-dashboard-appointments-body {
+            padding: 20px;
+            height: 100%;
+            .appointment-header {
+                text-align: center;
+                font-size: 3.5vmin;
+                font-weight: 600;
+            }
+        }
     }
 }

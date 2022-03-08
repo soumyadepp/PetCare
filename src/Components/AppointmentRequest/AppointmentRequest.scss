@@ -1,0 +1,61 @@
+.appointment-request-container {
+    padding: 12px;
+    margin: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    justify-content: center;
+    box-shadow: 0px 0px 10px #3f3f3f;
+    .appointment-request-header {
+        h1 {
+            font-size: 3vmin;
+        }
+    }
+    .appointment-request-body {
+        margin-block-start: 10px;
+        .date {
+            font-weight: 500;
+            font-size: 3vmin;
+        }
+        .time {
+            font-weight: 500;
+            font-size: 3vmin;
+        }
+    }
+    .appointment-request-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .appointment-request-footer-left {
+            width: 100%;
+            padding: 10px;
+            background: green;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            justify-content: center;
+            h2 {
+                margin-left: 5px;
+                font-size: 2.5vmin;
+                color: #fff;
+            }
+        }
+        .appointment-request-footer-right {
+            background: #d10023;
+            width: 100%;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            h2 {
+                margin-left: 5px;
+                color: #fff;
+                font-size: 2.5vmin;
+            }
+        }
+    }
+}

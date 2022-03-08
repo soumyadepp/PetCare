@@ -4,10 +4,15 @@ import "./Homepage.scss";
 import AddIcon from "@material-ui/icons/AddBoxOutlined";
 import Modal, { bodyOpenClassName } from "react-modal/lib/components/Modal";
 import { useState } from "react";
+import MedicationIcon from "@material-ui/icons/LocalHospitalOutlined";
+import BookOnlineIcon from "@material-ui/icons/BookOutlined";
 import CachedIcon from "@material-ui/icons/Cached";
+import UpdateIcon from "@material-ui/icons/Update";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
+import VetCard from "../VetCard/VetCard";
+import VetsNearMe from "../VetsNearMe/VetsNearMe";
 function Homepage() {
   const userEmail = localStorage.getItem("email");
   const [open, setOpen] = useState(false);
@@ -18,6 +23,7 @@ function Homepage() {
   const [age, setAge] = useState();
   const [weight, setWeight] = useState();
   const [previewSource, setPreviewSource] = useState("");
+  const [vets, setVets] = useState([]);
   const [loading, setLoading] = useState(false);
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -124,19 +130,33 @@ function Homepage() {
   };
   useEffect(() => {
     if (
+      localStorage.getItem("vet_email") != null &&
+      localStorage.getItem("vet_email").length > 0
+    ) {
+      setLoading(true);
+      window.location.href = "/vet/dashboard";
+    } else if (
       localStorage.getItem("email") == "undefined" ||
       localStorage.getItem("email") == null
     ) {
+      setLoading(true);
       window.location.href = "/login";
     }
     axios
       .get(`http://localhost:4000/app/pet/${userEmail}`)
       .then((res) => {
         setUserPet(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         setUserPet({ image: "", name: "Unable to fetch at this moment" });
+      });
+    axios
+      .get("http://localhost:4000/app/vets")
+      .then((res) => {
+        setVets(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
   }, [userPet]);
   return (
@@ -262,18 +282,25 @@ function Homepage() {
       )}
       {!loading && (
         <div className="dashboard-middle">
-          <div className="dashboard-middle-top">
-            {!userPet && <h2>Appointments will appear here.</h2>}
-            {userPet && (
-              <h2>{userPet.name} 's appoinments will appear here.</h2>
-            )}
-          </div>
-          <div className="dashboard-middle-bottom">
-            <h2>Vet Cards will appear here.</h2>
+          <h2>Vets near you</h2>
+          <VetsNearMe vets={vets} pet={userPet} />
+        </div>
+      )}
+      {!loading && (
+        <div className="dashboard-right">
+          <div className="select-btn-container">
+            <button className="select-btn">
+              <MedicationIcon /> Vets Near Me
+            </button>
+            <button className="select-btn">
+              <BookOnlineIcon /> My Appointments
+            </button>
+            <button className="select-btn">
+              <UpdateIcon /> Upcoming
+            </button>
           </div>
         </div>
       )}
-      {!loading && <div className="dashboard-right"></div>}
     </div>
   );
 }
