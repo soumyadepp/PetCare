@@ -2,18 +2,19 @@ import React from "react";
 import { useEffect } from "react";
 import "./Homepage.scss";
 import AddIcon from "@material-ui/icons/AddBoxOutlined";
-import Modal, { bodyOpenClassName } from "react-modal/lib/components/Modal";
+import Modal from "react-modal/lib/components/Modal";
 import { useState } from "react";
 import MedicationIcon from "@material-ui/icons/LocalHospitalOutlined";
 import BookOnlineIcon from "@material-ui/icons/BookOutlined";
 import CachedIcon from "@material-ui/icons/Cached";
 import UpdateIcon from "@material-ui/icons/Update";
-import { Link } from "react-router-dom";
-
-import axios from "axios";
-import VetCard from "../VetCard/VetCard";
 import VetsNearMe from "../VetsNearMe/VetsNearMe";
+import axios from "axios";
+import MyAppointments from "../MyAppointments/MyAppointments";
+Modal.setAppElement("#root");
+
 function Homepage() {
+  const [selected, setSelected] = useState("vets near me");
   const userEmail = localStorage.getItem("email");
   const [open, setOpen] = useState(false);
   const [fileInputState, setFileInputState] = useState("");
@@ -25,6 +26,7 @@ function Homepage() {
   const [previewSource, setPreviewSource] = useState("");
   const [vets, setVets] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [appointments, setAppointments] = useState([]);
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
@@ -123,11 +125,7 @@ function Homepage() {
     width: "100%",
     color: "#fff",
   };
-  const handleClick = (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    window.location.href = "/login";
-  };
+
   useEffect(() => {
     if (
       localStorage.getItem("vet_email") != null &&
@@ -136,8 +134,8 @@ function Homepage() {
       setLoading(true);
       window.location.href = "/vet/dashboard";
     } else if (
-      localStorage.getItem("email") == "undefined" ||
-      localStorage.getItem("email") == null
+      localStorage.getItem("email") === "undefined" ||
+      localStorage.getItem("email") === null
     ) {
       setLoading(true);
       window.location.href = "/login";
@@ -153,12 +151,26 @@ function Homepage() {
     axios
       .get("http://localhost:4000/app/vets")
       .then((res) => {
+        console.log(res.data);
         setVets(res.data);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [userPet]);
+    axios
+      .get(
+        `http://localhost:4000/app/appointments/users/all/${localStorage.getItem(
+          "id"
+        )}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setAppointments(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [userPet, userEmail]);
   return (
     <div className="dashboard-container">
       {loading && (
@@ -212,6 +224,7 @@ function Homepage() {
                     <>
                       <img
                         src={previewSource}
+                        alt=""
                         style={{ height: "25vmin", objectFit: "contain" }}
                       />
                     </>
@@ -282,17 +295,32 @@ function Homepage() {
       )}
       {!loading && (
         <div className="dashboard-middle">
-          <h2>Vets near you</h2>
-          <VetsNearMe vets={vets} pet={userPet} />
+          {selected === "vets near me" && (
+            <>
+              <h2>Vets near you</h2>
+              <VetsNearMe vets={vets} pet={userPet} />
+            </>
+          )}
+          {selected === "appointments" && (
+            <>
+              <MyAppointments appointments={appointments} />
+            </>
+          )}
         </div>
       )}
       {!loading && (
         <div className="dashboard-right">
           <div className="select-btn-container">
-            <button className="select-btn">
+            <button
+              className="select-btn"
+              onClick={() => setSelected("vets near me")}
+            >
               <MedicationIcon /> Vets Near Me
             </button>
-            <button className="select-btn">
+            <button
+              className="select-btn"
+              onClick={() => setSelected("appointments")}
+            >
               <BookOnlineIcon /> My Appointments
             </button>
             <button className="select-btn">

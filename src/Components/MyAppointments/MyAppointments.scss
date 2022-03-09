@@ -1,0 +1,19 @@
+.appointment-container {
+    height: 100%;
+    width: 100%;
+    .appointment-wrapper {
+        padding: 10px;
+        height: 100%;
+        h2 {
+            padding: 5px;
+            text-align: center;
+            font-size: 4.5vmin;
+        }
+        .appointment-card-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 10px;
+        }
+    }
+}

@@ -1,0 +1,62 @@
+@mixin animate($animation, $duration, $method, $times) {
+    animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+.success-container {
+    height: calc(100vh - 80px);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    .success-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        h2 {
+            font-size: 7.5vmin;
+            font-weight: 600;
+        }
+        .verify {
+            margin-inline-start: 10px;
+            font-size: 8.5vmin;
+            font-weight: 600;
+            animation: verify 0.8s ease-in-out;
+            color: green;
+            @include keyframes(verify) {
+                0% {
+                    transform: rotate(360deg);
+                    fill: #000;
+                }
+                50% {
+                    transform: rotate(180deg);
+                    fill: #fff;
+                }
+                100% {
+                    transform: rotate(0deg);
+                    transform: scale(1);
+                    fill: green;
+                }
+            }
+        }
+    }
+    .btn {
+        width: 100%;
+        padding: 8px;
+        background: #000;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 2.5vmin;
+        color: #fff;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}

@@ -56,7 +56,7 @@ function Signup() {
       })
         .then((response) => {
           console.log(response);
-          if (response.data.error == null) window.location.href = "/login";
+          if (response.data.error === null) window.location.href = "/login";
           else {
             setLoading(false);
             setError("User already exists.");

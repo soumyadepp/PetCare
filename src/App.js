@@ -10,6 +10,7 @@ import VetUpload from "./Components/VetUpload/VetUpload";
 import VetLogin from "./Components/VetLogin/VetLogin";
 import VetDashboard from "./Components/VetDashboard/VetDashboard";
 import SuccessPage from "./Components/SuccessPage/SuccessPage";
+import SuccessAppointment from "./Components/SuccessAppointment/SuccessAppointment";
 function App() {
   const user =
     localStorage.getItem("email") != null ? localStorage.getItem("email") : "";
@@ -52,7 +53,7 @@ function App() {
             path="/"
             element={
               <>
-                <Navbar />
+                <Navbar user={user ? user : vetUser} />
                 <Home />
               </>
             }
@@ -81,6 +82,15 @@ function App() {
               <>
                 <Navbar user={user} />
                 <SuccessPage />
+              </>
+            }
+          />
+          <Route
+            path="/appointment/success"
+            element={
+              <>
+                <Navbar user={user} />
+                <SuccessAppointment />
               </>
             }
           />

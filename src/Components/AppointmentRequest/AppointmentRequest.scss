@@ -11,6 +11,11 @@
         h1 {
             font-size: 3vmin;
         }
+        img {
+            height: 35vmin;
+            width: auto;
+            object-fit: contain;
+        }
     }
     .appointment-request-body {
         margin-block-start: 10px;
@@ -41,6 +46,11 @@
                 font-size: 2.5vmin;
                 color: #fff;
             }
+            &:hover {
+                transition: all 0.2s ease-in;
+                opacity: 0.75;
+                cursor: pointer;
+            }
         }
         .appointment-request-footer-right {
             background: #d10023;
@@ -55,6 +65,10 @@
                 margin-left: 5px;
                 color: #fff;
                 font-size: 2.5vmin;
+            }
+            &:hover {
+                opacity: 0.75;
+                cursor: pointer;
             }
         }
     }
