@@ -3,40 +3,48 @@ const mongoose = require('mongoose')
 const schema = require('mongoose').Schema;
 
 const vetSchema = new schema({
-    name:{
-        type:String,
-        required:true
+    name: {
+        type: String,
+        required: true
     },
-    image:{
-        type:String,
-        required:false
+    image: {
+        type: String,
+        required: false
     },
-    degree:{
-        type:String,
-        required:true
+    degree: {
+        type: String,
+        required: true
     },
-    clinic:{
-        type:String,
-        required:true
+    clinic: {
+        type: String,
+        required: true
     },
-    address:{
-        type:String,
-        required:true,
+    startTime: {
+        type: String,
+        default: '9:00'
     },
-    email:{
-        type:String,
-        required:true,
-        unique:true
+    endTime: {
+        type: String,
+        default: '20:00'
     },
-    phone:{
-        type:String,
-        required:true,
-        unique:true
+    address: {
+        type: String,
+        required: true,
     },
-    appointments:{
-        type:Number,
-        default:0
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    phone: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    appointments: {
+        type: Number,
+        default: 0
     }
 });
 
-module.exports = mongoose.model('vets',vetSchema);
+module.exports = mongoose.model('vets', vetSchema);
